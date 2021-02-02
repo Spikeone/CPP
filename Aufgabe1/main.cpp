@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include "Taxi.h";
+#include <random>
+#include "Taxi.h"
 
 int main()
 {
@@ -8,9 +9,22 @@ int main()
 
     Taxi taxis[MAX_TAXI];
 
+    // https://stackoverflow.com/a/19728404
+    std::random_device rd;     // only used once to initialise (seed) engine
+    std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
+    std::uniform_int_distribution<int> km(0, 10000); // guaranteed unbiased
+    std::uniform_int_distribution<float> verbrauch(70, 100);
+    std::uniform_int_distribution<float> fahrpreisKm(200, 350);
+    std::uniform_int_distribution<int> maxTankInhalt(60, 80);
+
     for (int i = 0; i < MAX_TAXI; i++)
     {
-        taxis[i].init(std::rand() % 10000, 7 + (std::rand() % 30) / 10, 2 + (std::rand() % 150) / 100, 60 + (std::rand() % 20), "Taxi" + std::to_string(i + 1));
+        taxis[i].init(
+                km(rng),
+                verbrauch(rng) / 10,
+                fahrpreisKm(rng) / 100,
+                maxTankInhalt(rng),
+                "Taxi" + std::to_string(i + 1));
     }
 
     char input = '0';
