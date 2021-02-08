@@ -10,8 +10,8 @@ class Taxi
 public:
     void init(float km, float verbrauch, float fahrpreisKM, float maxTankInhalt, std::string name);
     bool fahrtVerbuchen(float distanz, bool passagiere);
-    void tanken(float preisL);
-    void ausgabe();
+    bool tanken(float preisL);
+    std::string ausgabe();
     std::string getName() { return this->name; }
 
 private:

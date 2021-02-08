@@ -12,19 +12,19 @@ int main()
     // https://stackoverflow.com/a/19728404
     std::random_device rd;     // only used once to initialise (seed) engine
     std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
-    std::uniform_int_distribution<int> km(0, 10000); // guaranteed unbiased
-    std::uniform_int_distribution<float> verbrauch(70, 100);
-    std::uniform_int_distribution<float> fahrpreisKm(200, 350);
+    std::uniform_real_distribution<float> km(0, 10000); // guaranteed unbiased
+    std::uniform_real_distribution<float> verbrauch(70, 100);
     std::uniform_int_distribution<int> maxTankInhalt(60, 80);
+    std::uniform_real_distribution<float> fahrpreisKm(200, 350);
 
     for (int i = 0; i < MAX_TAXI; i++)
     {
         taxis[i].init(
-                km(rng),
-                verbrauch(rng) / 10,
-                fahrpreisKm(rng) / 100,
-                maxTankInhalt(rng),
-                "Taxi" + std::to_string(i + 1));
+            km(rng),
+            verbrauch(rng) / 10.f,
+            maxTankInhalt(rng) / 100.f,
+            fahrpreisKm(rng),
+            "Taxi" + std::to_string(i + 1));
     }
 
     char input = '0';
@@ -48,6 +48,10 @@ int main()
 
             taxiID -= 1;
 
+            // bei einer Eingabe von 3 wird eine taxiID von 2 genommen
+            // der maximale arrayindex ist 2
+            // daher ist die prüfung 2 >= 2 (taxiID >= MAX_TAXI) korrekt, da dies der Fehlerfall ist
+            // es wird nicht auf Gültigkeit der IDs geprüft sondern UNgültigkeit
             if (taxiID < 0 || taxiID >= MAX_TAXI || std::cin.fail())
             {
                 std::cout << "Ungueltige Taxi ID!" << std::endl << std::endl;
@@ -99,15 +103,17 @@ int main()
             }
             else
             {
-                taxis[taxiID].tanken(preisL);
-                std::cout << "Fahrzeug voll betankt!" << std::endl << std::endl;
+                if(taxis[taxiID].tanken(preisL))
+                    std::cout << "Tankvorgang abgeschlossen!" << std::endl << std::endl;
+                else
+                    std::cout << "Tanken war nicht erfolgreich!" << std::endl << std::endl;
             }
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }break;
         case '3':
         {
-            taxis[taxiID].ausgabe();
+            std::cout << taxis[taxiID].ausgabe() << std::endl;
         }break;
         default:
         {
