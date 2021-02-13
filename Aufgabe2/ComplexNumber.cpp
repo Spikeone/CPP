@@ -66,3 +66,8 @@ void ComplexNumber::updatePhipartPolar(double phi)
 {
     updateValuePolar(polarRealPart, phi);
 }
+
+ComplexNumber::ComplexNumber(const PolarData data)
+{
+    cartasian = CartasianData(data);
+}

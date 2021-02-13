@@ -6,23 +6,19 @@
 #define _USE_MATH_DEFINES
 
 #include<string>
+#include "PolarData.h"
+#include "CartasianData.h"
 
 class ComplexNumber
 {
 public:
-    // 
-    double realPart;
-    double imaginaryPart;
-
-    // 
-    double polarRealPart;
-    double polarPhiPart;
+    PolarData polar;
+    CartasianData cartasian;
 
 public:
-    ComplexNumber(double a, double b) : realPart(a), imaginaryPart(b)
-    {
-        calculatePolarValues();
-    }
+    ComplexNumber(const PolarData data);
+
+    ComplexNumber(const CartasianData data);
 
     std::string toCartesianString();
     std::string toPolarString();
