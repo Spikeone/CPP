@@ -1,4 +1,4 @@
-#include "ComplexNumber.h"
+#include "includes.h"
 
 std::string ComplexNumber::toCartesianString()
 {

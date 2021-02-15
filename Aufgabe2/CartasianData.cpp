@@ -3,8 +3,7 @@
 //
 
 #include <cmath>
-#include <string>
-#include "CartasianData.h"
+#include "includes.h"
 
 CartasianData::CartasianData(PolarData data) {
     updateValues(data);

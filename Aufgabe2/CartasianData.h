@@ -5,8 +5,8 @@
 #ifndef CARTASIANDATA_H
 #define CARTASIANDATA_H
 
-
-#include "PolarData.h"
+#include "includes.h"
+class PolarData;
 
 class CartasianData
 {

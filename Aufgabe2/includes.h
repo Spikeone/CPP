@@ -5,8 +5,10 @@
 #ifndef INCLUDES_H
 #define INCLUDES_H
 
-#include "CartasianData.h"
+#include <string>
+
 #include "PolarData.h"
+#include "CartasianData.h"
 #include "ComplexNumber.h"
 
 #endif //INCLUDES_H

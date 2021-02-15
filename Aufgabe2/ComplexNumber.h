@@ -3,9 +3,7 @@
 #ifndef COMPLEX_NUMBER_H
 #define COMPLEX_NUMBER_H
 
-#include<string>
-#include "PolarData.h"
-#include "CartasianData.h"
+#include "includes.h"
 
 class ComplexNumber
 {
