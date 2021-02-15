@@ -10,12 +10,13 @@
 class PolarData
 {
 private:
-    double realPart;
-    double phiPart;
+    double realPart = 0;
+    double phiPart = 0;
 
 public:
-    PolarData (double real, double phi) : realPart(real), phiPart(phi) { }
-    PolarData (CartasianData data);
+    PolarData() {};
+    PolarData(double real, double phi) : realPart(real), phiPart(phi) { }
+    PolarData(CartasianData data);
 
     double getRealPart() const {
         return realPart;
@@ -29,6 +30,8 @@ public:
     void setRealPart(double real);
     void setPhiPart(double phi);
     void updateValues(CartasianData data);
+
+    std::string toString() const;
 };
 
 #endif //POLARDATA_H

@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <string>
 #include "CartasianData.h"
 
 CartasianData::CartasianData(PolarData data) {
@@ -25,4 +26,8 @@ void CartasianData::setImaginaryPart(double imaginary) {
 void CartasianData::updateValues(PolarData data) {
     realPart = data.getRealPart() * std::cos(data.getPhiPart());
     imaginaryPart = data.getRealPart() * std::sin(data.getPhiPart());
+}
+
+std::string CartasianData::toString() {
+    return "z = " + std::to_string(realPart) + " + " + std::to_string(imaginaryPart) + "i";
 }

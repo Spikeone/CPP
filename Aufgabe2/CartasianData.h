@@ -11,12 +11,13 @@
 class CartasianData
 {
 private:
-    double realPart;
-    double imaginaryPart;
+    double realPart = 0;
+    double imaginaryPart = 0;
 
 public:
+    CartasianData() {}
     CartasianData(PolarData data);
-    CartasianData(double a, double b) : realPart(a), imaginaryPart(b) { }
+    CartasianData(double a, double b) : realPart(a), imaginaryPart(b) {}
 
 
     double getRealPart() const {
@@ -31,6 +32,8 @@ public:
     void setRealPart(double real);
     void setImaginaryPart(double imaginary);
     void updateValues(PolarData data);
+
+    std::string toString();
 };
 
 

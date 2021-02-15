@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+#include <string>
 #include "PolarData.h"
 
 PolarData::PolarData(CartasianData data) {
@@ -37,4 +38,8 @@ void PolarData::updateValues(CartasianData data) {
         phiPart = std::atan(cartasianImaginaryPart / realPart) + M_PI;
     else
         phiPart = std::atan(cartasianImaginaryPart / realPart);
+}
+
+std::string PolarData::toString() const {
+    return "z = " + std::to_string(realPart) + "*e^(i*" + std::to_string(phiPart) + ")";
 }

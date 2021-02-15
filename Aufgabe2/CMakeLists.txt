@@ -8,4 +8,4 @@ include_directories(.)
 add_executable(Aufgabe2
         ComplexNumber.cpp
         ComplexNumber.h
-        main.cpp PolarData.cpp PolarData.h CartasianData.cpp CartasianData.h)
+        main.cpp PolarData.cpp PolarData.h CartasianData.cpp CartasianData.h includes.h)
