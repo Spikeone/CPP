@@ -22,6 +22,8 @@ void ComplexNumber::update(PolarData data)
     cartasian.updateValues(data);
 }
 
+// Aufgabe 5: hier könnte man die Initialisierungsliste verwenden, ergibt aber für unseren Anwendungsfall keinen Sinn,
+//     da wir jeweils die update Funktion aufrufen. unten analog
 ComplexNumber::ComplexNumber(PolarData data)
 {
     update(data);
