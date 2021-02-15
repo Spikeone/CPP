@@ -35,7 +35,7 @@ public:
     void setImaginaryPart(double imaginary);
     void updateValues(PolarData data);
 
-    std::string toString();
+    std::string toString() const;
 };
 
 

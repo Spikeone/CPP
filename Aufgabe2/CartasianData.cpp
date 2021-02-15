@@ -27,6 +27,6 @@ void CartasianData::updateValues(PolarData data) {
     imaginaryPart = data.getRealPart() * std::sin(data.getPhiPart());
 }
 
-std::string CartasianData::toString() {
+std::string CartasianData::toString() const {
     return "z = " + std::to_string(realPart) + " + " + std::to_string(imaginaryPart) + "i";
 }

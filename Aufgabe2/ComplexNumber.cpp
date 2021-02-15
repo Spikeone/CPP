@@ -1,11 +1,11 @@
 #include "includes.h"
 
-std::string ComplexNumber::toCartesianString()
+std::string ComplexNumber::toCartesianString() const
 {
     return cartasian.toString();
 }
 
-std::string ComplexNumber::toPolarString()
+std::string ComplexNumber::toPolarString() const
 {
     return polar.toString();
 }

@@ -16,8 +16,8 @@ public:
 
     explicit ComplexNumber(CartasianData data);
 
-    std::string toCartesianString();
-    std::string toPolarString();
+    std::string toCartesianString() const;
+    std::string toPolarString() const;
 
     void update(PolarData data);
     void update(CartasianData data);
