@@ -17,6 +17,8 @@ private:
 public:
     CartasianData() {}
     CartasianData(PolarData data);
+    // CartasianData(PolarData data = PolarData());
+    // Augabe 4: compiler complains this is to ambiguous
     CartasianData(double a, double b) : realPart(a), imaginaryPart(b) {}
 
 
