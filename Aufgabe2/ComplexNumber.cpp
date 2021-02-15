@@ -1,4 +1,8 @@
 #include "includes.h"
+#include "ComplexNumber.h"
+
+
+int ComplexNumber::instanceCount = 0;
 
 std::string ComplexNumber::toCartesianString() const
 {
@@ -26,10 +30,16 @@ void ComplexNumber::update(PolarData data)
 //     da wir jeweils die update Funktion aufrufen. unten analog
 ComplexNumber::ComplexNumber(PolarData data)
 {
+    instanceCount++;
     update(data);
 }
 
 ComplexNumber::ComplexNumber(CartasianData data)
 {
+    instanceCount++;
     update(data);
+}
+
+ComplexNumber::~ComplexNumber() {
+    instanceCount--;
 }
