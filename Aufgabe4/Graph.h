@@ -14,7 +14,7 @@ public:
 
     virtual std::string toString() = 0;
 
-    virtual float calcCircumference() = 0;
+    virtual float calcArea() = 0;
 protected:
     explicit Graph(Coordinate coordinate = Coordinate(0, 0)): origin(coordinate) {}
 };

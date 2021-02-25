@@ -13,10 +13,11 @@ public:
     Coordinate spanningCorner;
     explicit Rectangle(Coordinate spanningCorner, Coordinate origin = Coordinate()) : spanningCorner(spanningCorner), Graph(origin) {}
     std::string toString() override {
-        return "I am a rectangle. My origin is at " + origin.toString() + ". And my spanning corner is at " + spanningCorner.toString() + ".";
+        return "I am a rectangle. My origin is at " + origin.toString() + ". And my spanning corner is at "
+          + spanningCorner.toString() + ". I cover an area of " + std::to_string(calcArea()) + " units.";
     }
-    float calcCircumference() override {
-        return (std::abs(origin.x - spanningCorner.x) + std::abs(origin.y - spanningCorner.y)) * 2;
+    float calcArea() override {
+        return std::abs(origin.x - spanningCorner.x) * std::abs(origin.y - spanningCorner.y);
     }
 };
 

@@ -4,7 +4,7 @@
 #include "Rectangle.h"
 
 void testBaseClassCall(Graph* graph) {
-    std::cout << graph->calcCircumference() << std::endl;
+    std::cout << graph->calcArea() << std::endl;
 }
 
 int main()
@@ -36,9 +36,9 @@ int main()
     char option = 'q';
     std::vector<Graph*> list = std::vector<Graph*>();
     do {
-        std::cout << "q - Quit" << std::endl;
         std::cout << "n - New Graph" << std::endl;
         std::cout << "v - View Graphs" << std::endl;
+        std::cout << "q - Quit" << std::endl;
 
         std::cin >> option;
 
@@ -62,33 +62,33 @@ int main()
                     switch(viewOption) {
                         case 'm': {
                             std::cout << "Exciting, we have " + std::to_string(list.size()) + " graphs to view:" << std::endl;
-                            float totalCircumference = 0;
+                            float totalArea = 0;
                             for (auto & it : list) {
                                 std::cout << "    " + it->toString() << std::endl;
-                                totalCircumference += it->calcCircumference();
+                                totalArea += it->calcArea();
                             }
-                            std::cout << "Total circumference: " + std::to_string(totalCircumference) + "." << std::endl;
+                            std::cout << "Total area: " + std::to_string(totalArea) + "." << std::endl;
                             break;
                         }
                         case 's': {
                             std::cout << "Exciting, we have " + std::to_string(list.size()) + " graph(s) to view:" << std::endl;
-                            float totalCircumference = 0;
+                            float totalArea = 0;
                             for (auto & it : list) {
                                 if (dynamic_cast<Circle*>(it)) {
                                     std::cout << "    " + it->toString() << std::endl;
-                                    totalCircumference += it->calcCircumference();
+                                    totalArea += it->calcArea();
                                 }
                             }
-                            std::cout << "Total *circle* circumference: " + std::to_string(totalCircumference) + "." << std::endl;
+                            std::cout << "Total *circle* area: " + std::to_string(totalArea) + "." << std::endl;
 
-                            totalCircumference = 0;
+                            totalArea = 0;
                             for (auto & it : list) {
                                 if (dynamic_cast<Rectangle*>(it)) {
                                     std::cout << "    " + it->toString() << std::endl;
-                                    totalCircumference += it->calcCircumference();
+                                    totalArea += it->calcArea();
                                 }
                             }
-                            std::cout << "Total *rectangle* circumference: " + std::to_string(totalCircumference) + "." << std::endl;
+                            std::cout << "Total *rectangle* area: " + std::to_string(totalArea) + "." << std::endl;
                             break;
                         }
                         default: {
@@ -126,6 +126,9 @@ int main()
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                             list.push_back(new Rectangle(Coordinate(x1, y1), Coordinate(x0, y0)));
                             std::cout << "Added. *shroom*" << std::endl;
+                            break;
+                        }
+                        case 'b': {
                             break;
                         }
                         default: {
