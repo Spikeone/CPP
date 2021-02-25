@@ -2,6 +2,7 @@
 #include <vector>
 #include "Circle.h"
 #include "Rectangle.h"
+#include "InputException.h"
 
 void testBaseClassCall(Graph* graph) {
     std::cout << graph->calcArea() << std::endl;
@@ -112,20 +113,36 @@ int main()
                             std::cout << "Please enter origin x, origin y and radius (space separated, eg. '0 0 1'):" << std::endl;
                             float r, x, y;
                             std::cin >> x >> y >> r;
+                            try {
+                                if (std::cin.fail()) {
+                                    throw InputException("Invalid input.");
+                                }
+                                list.push_back(new Circle(r, Coordinate(x, y)));
+                                std::cout << "Added. *boom*" << std::endl;
+                            }
+                            catch (CustomException e) {
+                                std::cout << "Failed to add circle.\n" + e.getError() << std::endl;
+                            }
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                            list.push_back(new Circle(r, Coordinate(x, y)));
-                            std::cout << "Added. *boom*" << std::endl;
                             break;
                         }
                         case 'r': {
                             std::cout << "Please enter origin and spanning corner as coordinates (space separated, eg. '0 0 1 1'):" << std::endl;
                             float x1, y1, x0, y0;
                             std::cin >> x1 >> y1 >> x0 >> y0;
+                            try {
+                                if (std::cin.fail()) {
+                                    throw InputException("Invalid input.");
+                                }
+                                list.push_back(new Rectangle(Coordinate(x1, y1), Coordinate(x0, y0)));
+                                std::cout << "Added. *shroom*" << std::endl;
+                            }
+                            catch (CustomException e) {
+                                std::cout << "Failed to add rectangle.\n" + e.getError() << std::endl;
+                            }
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                            list.push_back(new Rectangle(Coordinate(x1, y1), Coordinate(x0, y0)));
-                            std::cout << "Added. *shroom*" << std::endl;
                             break;
                         }
                         case 'b': {

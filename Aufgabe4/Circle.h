@@ -7,11 +7,16 @@
 
 #include <cmath>
 #include "Graph.h"
+#include "CircleException.h"
 
 class Circle : public Graph {
 public:
     float radius;
-    explicit Circle(float radius, Coordinate origin = Coordinate()) : radius(radius), Graph(origin) {}
+    explicit Circle(float radius, Coordinate origin = Coordinate()) : radius(radius), Graph(origin) {
+        if (radius <= 0) {
+            throw CircleException("Circle radius must be bigger than zero.");
+        }
+    }
     std::string toString() override;
     float calcArea() override;
 };
