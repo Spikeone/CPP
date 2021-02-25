@@ -19,6 +19,10 @@ public:
 
     ~ComplexNumber();
 
+    ComplexNumber(const ComplexNumber& complexNumber) {
+        instanceCount++;
+    }
+
     std::string toCartesianString() const;
     std::string toPolarString() const;
 
