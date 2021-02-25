@@ -3,3 +3,7 @@
 //
 
 #include "Coordinate.h"
+
+std::string Coordinate::toString() const {
+    return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
+}

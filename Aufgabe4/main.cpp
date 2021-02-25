@@ -61,7 +61,7 @@ int main()
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     switch(viewOption) {
                         case 'm': {
-                            std::cout << "Exciting, we have " + std::to_string(list.size()) + " graphs to view:" << std::endl;
+                            std::cout << "Exciting, we have " + std::to_string(list.size()) + " graph(s) to view:" << std::endl;
                             float totalArea = 0;
                             for (auto & it : list) {
                                 std::cout << "    " + it->toString() << std::endl;

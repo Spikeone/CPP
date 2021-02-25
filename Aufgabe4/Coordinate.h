@@ -13,9 +13,7 @@ public:
     float x = 0, y = 0;
     Coordinate(float x, float y) : x(x), y(y) {}
     Coordinate() = default;
-    std::string toString() const {
-        return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
-    }
+    std::string toString() const;
 };
 
 #endif //AUFGABE4_COORDINATE_H
